@@ -1,5 +1,10 @@
 # MaviBot — Chatbot baseado em regras
 
+👨‍💻 Autor
+Aluno: Samara Culere de Oliveira
+Disciplina: Desenvolvimento de ChatBot
+Professor: Murilo Costa
+
 ## 1. Descrição
 
 O **MaviBot** é um chatbot baseado em regras desenvolvido em Java para a disciplina de Desenvolvimento de ChatBot, do curso de Ciência da Computação — Bacharelado, da UNIDERP.
