@@ -1,28 +1,30 @@
 # MaviBot - Chatbot baseado em regras
 
-### 1. DESCRIÇÃO
+## 1. DESCRIÇÃO
 
 A MaviBot é um chatbot baseado em regras desenvolvido em Java para a disciplina de Desenvolvimento de ChatBot, do curso de Ciência da Computação - Bacharelado, na UNIDERP.
 
-O projeto foi desenvolvido com foco na área de cobrança e recuperação de crédito. A ideia surgiu a partir de uma situação que faz parte da minha rotina de trabalho na área de assessoria e recuperação de crédito, onde existem atendimentos relacionados a negociações de dívidas, boletos, acordos e encaminhamento para atendentes.
+O projeto foi desenvolvido com foco em cobrança e recuperação de crédito, área relacionada à minha rotina de trabalho. A ideia surgiu a partir de situações comuns desse tipo de atendimento, como negociação de dívidas, consulta e atualização de boletos e encaminhamento para atendentes.
 
-A proposta da MaviBot é funcionar como um primeiro atendimento ao cliente, ajudando a resolver algumas solicitações mais comuns antes que seja necessário encaminhar o atendimento para uma pessoa. Dessa forma, o chatbot pode auxiliar em dúvidas e solicitações simples e deixar para o atendente os casos que precisam de uma análise ou atendimento mais específico.
+A proposta é utilizar a MaviBot como um primeiro atendimento, resolvendo solicitações mais simples e encaminhando para um atendente os casos que precisam de uma análise específica.
 
-Para este trabalho foi utilizado um exemplo com a UCDB - Universidade Católica Dom Bosco como credora. Os dados utilizados no programa são simulados e foram colocados diretamente no código apenas para demonstrar o funcionamento do chatbot.
+Neste trabalho, a UCDB - Universidade Católica Dom Bosco foi utilizada como exemplo de credora. Os dados presentes no programa são simulados e estão cadastrados diretamente no código para demonstrar o funcionamento do chatbot.
 
-O projeto foi desenvolvido utilizando regras, palavras-chave, estruturas condicionais, laços de repetição, tratamento de erros e funções em Java.
+O projeto utiliza regras, palavras-chave, estruturas condicionais, laços de repetição, funções, tratamento de erros e recursos de data do Java.
 
-### 2. COMO EXECUTAR
+## 2. COMO EXECUTAR
 
-Para executar o projeto é necessário ter o Java instalado no computador.
+É necessário ter o Java instalado no computador.
 
-2.1. Abra a pasta do projeto no Visual Studio Code.
+### 2.1. Pelo Visual Studio Code
 
-2.2. Abra o arquivo `MaviBot.java`.
+1. Abra a pasta do projeto no Visual Studio Code.
+2. Abra o arquivo `MaviBot.java`.
+3. Execute o programa pelo próprio Visual Studio Code ou pelo terminal.
 
-2.3. Execute o programa pelo próprio Visual Studio Code ou pelo terminal.
+### 2.2. Pelo terminal
 
-Caso seja utilizado o terminal, primeiro compile o arquivo:
+Compile o arquivo:
 
 ```bash
 javac MaviBot.java
@@ -34,75 +36,59 @@ Depois execute:
 java MaviBot
 ```
 
-2.4. Após iniciar, o chatbot apresentará uma mensagem inicial e o menu principal.
+Ao iniciar, o chatbot apresenta o menu principal. O usuário pode escolher uma opção pelo número ou utilizar palavras relacionadas à solicitação.
 
-2.5. O usuário poderá escolher uma das opções disponíveis ou escrever algumas palavras relacionadas ao que deseja.
+Para encerrar, podem ser utilizados comandos como `sair`, `tchau` e `encerrar`, além da opção `5`.
 
-2.6. Para encerrar a conversa, pode ser utilizada a opção `5` ou palavras como `sair`, `tchau` ou `encerrar`.
+## 3. FUNCIONALIDADES
 
-### 3. FUNCIONALIDADES DO CHATBOT
+### 3.1. Negociação de dívida
 
-A MaviBot possui algumas funções voltadas para situações comuns de atendimento na área de cobrança.
+Permite consultar uma dívida utilizando um CPF de teste cadastrado no programa. Após a consulta, são apresentadas as mensalidades, os valores originais e o total da dívida.
 
-#### 3.1. Negociação de dívida
-
-A opção de negociação permite consultar uma dívida utilizando um CPF de teste cadastrado no próprio programa.
-
-Depois de localizar os dados, o chatbot apresenta as mensalidades, os valores originais e o total da dívida.
-
-O usuário pode escolher entre as formas de negociação disponíveis:
+O usuário pode escolher entre:
 
 * Pagamento à vista;
 * Pagamento parcelado;
 * Pagamento com cartão de crédito;
 * Não realizar a negociação;
-* Voltar para o menu.
+* Voltar ao menu.
 
-Na opção à vista, o sistema utiliza 20% do valor da dívida como valor para pagamento, representando um desconto de 80%.
+As condições implementadas no código são:
 
-Na opção parcelada, é solicitada uma entrada de 25% e o restante pode ser dividido em até 7 parcelas.
+* **À vista:** o cliente paga 20% do valor original da dívida, correspondendo a 80% de desconto;
+* **Parcelado:** é calculada uma entrada de 25% do valor original e o restante pode ser dividido em até 7 parcelas;
+* **Cartão de crédito:** o valor correspondente ao pagamento à vista recebe um acréscimo de 12% e pode ser dividido em até 6 parcelas.
 
-Na opção de cartão de crédito, o valor à vista recebe um acréscimo de 12% e pode ser dividido em até 6 parcelas.
+Após o cálculo, o usuário pode confirmar ou não a negociação. Em caso de confirmação, são solicitados os dados de contato para continuidade do atendimento.
 
-Depois da escolha, o chatbot apresenta os valores calculados e pergunta se o usuário deseja confirmar a negociação.
+### 3.2. Segunda via de boleto
 
-Caso a negociação seja confirmada, são solicitados os dados de contato para que o atendimento possa continuar.
+Permite consultar os boletos vinculados a um CPF cadastrado.
 
-#### 3.2. Segunda via de boleto
+É possível consultar todas as parcelas ou informar uma ou mais datas específicas. Quando uma data é informada, o programa verifica se existe uma parcela correspondente.
 
-A segunda via permite consultar os boletos de um CPF cadastrado.
+Após a consulta, o usuário pode escolher entre WhatsApp e e-mail para receber a segunda via.
 
-O usuário pode escolher entre consultar todas as parcelas ou informar uma ou mais datas específicas.
+### 3.3. Boleto em atraso
 
-Quando uma data específica é informada, o chatbot verifica se existe uma parcela correspondente àquela data.
-
-Depois da seleção, o sistema apresenta os dados das parcelas encontradas e solicita um canal de contato para o envio da segunda via.
-
-Os canais disponíveis são WhatsApp e e-mail.
-
-#### 3.3. Boleto em atraso
-
-A opção de boleto em atraso permite consultar parcelas vencidas e calcular um novo valor atualizado.
+Permite consultar parcelas vencidas e calcular o valor atualizado.
 
 O cálculo considera:
 
 * Valor original da parcela;
 * Multa de 10%;
-* Juros de 1% ao mês, calculados de forma proporcional aos dias de atraso.
+* Juros de 1% ao mês, calculados proporcionalmente aos dias de atraso.
 
-O usuário pode consultar todas as parcelas em atraso ou informar datas específicas.
+É possível consultar todas as parcelas em atraso ou informar datas específicas.
 
-Depois de apresentar os valores atualizados, o chatbot pergunta se o usuário deseja atualizar o boleto.
+Depois de apresentar os valores atualizados, o usuário pode confirmar a atualização do boleto. Nesse caso, o sistema define uma nova data de vencimento para 7 dias após a data atual e solicita o canal de contato para envio.
 
-Quando a atualização é confirmada, o sistema calcula uma nova data de vencimento utilizando 7 dias a partir da data atual.
+### 3.4. Falar com atendente
 
-Após a atualização, o usuário pode escolher o canal de contato para receber o boleto.
+Quando a solicitação não pode ser resolvida pelas opções disponíveis, o usuário pode solicitar atendimento com um agente.
 
-#### 3.4. Atendimento com agente
-
-Quando o usuário precisa de um atendimento que não pode ser resolvido pelas opções disponíveis, ele pode solicitar o atendimento com um agente.
-
-Nesse fluxo, a MaviBot solicita:
+Nesse fluxo são solicitados:
 
 * Nome;
 * CPF;
@@ -110,17 +96,13 @@ Nesse fluxo, a MaviBot solicita:
 * Telefone ou e-mail;
 * Motivo do atendimento.
 
-Depois de preencher essas informações, o chatbot apresenta uma confirmação de que a solicitação será encaminhada para um atendente.
+Ao final, o chatbot informa que a solicitação será encaminhada para um atendente.
 
-### 4. REGRAS E PALAVRAS-CHAVE
+## 4. REGRAS E RECONHECIMENTO DE MENSAGENS
 
-A MaviBot funciona através de regras definidas diretamente no código Java.
+A MaviBot identifica as solicitações por meio de palavras-chave e condições definidas diretamente no código. O projeto não utiliza inteligência artificial ou banco de dados.
 
-O chatbot não utiliza inteligência artificial ou banco de dados para interpretar as mensagens. A identificação das solicitações é feita através de palavras-chave e condições definidas no programa.
-
-#### 4.1. Menu principal
-
-As principais opções do menu são:
+### 4.1. Menu principal
 
 ```text
 1 - Negociar dívida
@@ -130,41 +112,21 @@ As principais opções do menu são:
 5 - Sair
 ```
 
-Além dos números, algumas opções podem ser identificadas através de palavras relacionadas.
+Além das opções numéricas, algumas solicitações podem ser identificadas por palavras relacionadas.
 
-Para negociação, são utilizadas palavras como:
+**Negociação:** `negociar`, `dívida`, `acordo`, `negociação`
 
-* negociar;
-* dívida;
-* acordo;
-* negociação.
+**Segunda via:** `segunda via`, `segunda`, `parcela`
 
-Para segunda via, são utilizadas palavras como:
+**Boleto em atraso:** `boleto`, `atrasado`, `atraso`, `vencido`, `boleto atualizado`
 
-* segunda via;
-* segunda;
-* parcela.
+**Atendimento:** `atendente`, `atendimento`
 
-Para boleto em atraso, são consideradas palavras como:
+### 4.2. Normalização do texto
 
-* boleto;
-* atrasado;
-* atraso;
-* vencido;
-* boleto atualizado.
+O programa utiliza a classe `Normalizer` para tratar diferentes formas de escrita.
 
-Para atendimento, são utilizadas palavras como:
-
-* atendente;
-* atendimento.
-
-#### 4.2. Reconhecimento de diferentes formas de escrita
-
-O programa utiliza a classe `Normalizer` do Java para normalizar o texto digitado pelo usuário.
-
-Com isso, o chatbot consegue trabalhar com diferentes formas de escrita, como letras maiúsculas e minúsculas e palavras com acentos.
-
-Por exemplo, textos como:
+Assim, palavras como:
 
 ```text
 Negociação
@@ -172,89 +134,121 @@ NEGOCIAÇÃO
 negociacao
 ```
 
-podem ser tratados de forma semelhante pelo programa.
+podem ser reconhecidas de forma semelhante, mesmo com diferenças de letras maiúsculas, minúsculas ou acentuação.
 
-Isso facilita a identificação das palavras-chave utilizadas nas regras.
+### 4.3. Regras compostas
 
-#### 4.3. Regras compostas
+Algumas intenções dependem da combinação de palavras.
 
-Algumas situações utilizam mais de uma palavra para identificar a intenção do usuário.
+No caso do boleto em atraso, por exemplo, o chatbot verifica termos relacionados a `boleto` junto com palavras que indicam atraso, como `atrasado`, `atraso` ou `vencido`.
 
-Por exemplo, para identificar um boleto em atraso, o chatbot verifica palavras relacionadas a boleto juntamente com palavras que indicam atraso, como "atrasado", "atraso" ou "vencido".
+Esse tipo de regra ajuda a diferenciar solicitações que possuem palavras semelhantes.
 
-Dessa forma, o programa consegue diferenciar melhor algumas solicitações.
+### 4.4. Encerramento
 
-#### 4.4. Comando para sair
-
-O chatbot possui comandos para encerrar a conversa.
-
-Entre eles estão:
+A conversa pode ser encerrada pela opção `5` ou por comandos como:
 
 * `sair`;
 * `tchau`;
-* `encerrar`;
-* opção `5`.
+* `encerrar`.
 
-Quando um desses comandos é identificado, o programa encerra o laço principal e finaliza a execução.
+Quando identificados, esses comandos interrompem o laço principal do programa.
 
-### 5. OUTRAS REGRAS IMPLEMENTADAS
+## 5. VALIDAÇÕES E TRATAMENTO DE ERROS
 
-#### 5.1. Validação de CPF
+Para evitar entradas incorretas durante o atendimento, foram implementadas algumas validações.
 
-O programa solicita o CPF do usuário para localizar os dados simulados.
+### 5.1. CPF
 
-Os CPFs utilizados no projeto são apenas dados de teste cadastrados diretamente no código.
+O CPF informado é validado para verificar se possui 11 números. Depois, é comparado com os registros simulados no código.
 
-Quando o CPF informado não está cadastrado, o chatbot informa que não encontrou os dados e permite que o usuário tente novamente dentro do limite definido pelo programa.
+Quando o CPF não é encontrado, o chatbot informa que não localizou os dados e apresenta um telefone para contato.
 
-#### 5.2. Validação de telefone
+### 5.2. Nome
 
-Quando o usuário escolhe WhatsApp como canal de contato, o chatbot solicita um número de telefone.
+O nome precisa ser informado e possuir pelo menos dois caracteres. Caso contrário, o usuário pode tentar novamente dentro do limite definido.
 
-O programa possui uma validação para verificar se o telefone possui uma quantidade adequada de números.
+### 5.3. Telefone
 
-#### 5.3. Validação de e-mail
+Ao escolher WhatsApp, o usuário informa um número de telefone com DDD.
 
-Quando o usuário escolhe o e-mail como canal de contato, o chatbot solicita o endereço de e-mail.
+O programa verifica se o número possui 10 ou 11 dígitos.
 
-O programa realiza uma validação simples verificando características básicas de um endereço de e-mail, como a presença de `@` e `.`.
+### 5.4. E-mail
 
-#### 5.4. Tratamento de erros
+Para o e-mail, é realizada uma validação simples com base em características básicas de um endereço, como a presença de `@` e `.`.
 
-O chatbot possui tratamento para entradas inválidas.
+### 5.5. Opções inválidas
 
-Quando o usuário informa uma opção que não existe, o programa apresenta uma mensagem informando que a opção não foi reconhecida.
+Quando uma opção não reconhecida é informada, o chatbot apresenta uma mensagem de erro.
 
-Também existe um limite de tentativas em alguns dos fluxos. Depois de três tentativas inválidas, o chatbot encerra aquele fluxo ou retorna ao menu, dependendo da situação.
+Alguns fluxos possuem limite de três tentativas. Ao atingir esse limite, o programa encerra o fluxo ou o atendimento, dependendo da situação.
 
-Esse tratamento foi utilizado para evitar que o programa fique preso indefinidamente em uma opção incorreta.
+Esse tratamento evita que o usuário fique preso indefinidamente em uma opção incorreta.
 
-#### 5.5. Cálculo de datas
+## 6. CÁLCULOS E DATAS
 
-O programa utiliza as classes de data do Java para realizar os cálculos relacionados aos vencimentos.
+O projeto utiliza `LocalDate` para trabalhar com datas e `ChronoUnit` para calcular a diferença de dias entre vencimentos e a data atual.
 
-Foi utilizado `LocalDate` para trabalhar com datas e `ChronoUnit` para calcular a diferença de dias entre duas datas.
+### 6.1. Atualização de boleto
 
-Esses recursos são utilizados principalmente no cálculo dos juros de boletos atrasados.
+Para parcelas vencidas, o valor atualizado é calculado considerando multa de 10% e juros de 1% ao mês, proporcionalmente aos dias de atraso.
 
-#### 5.6. Formatação dos valores
+A fórmula utilizada no código é:
 
-Os valores financeiros são apresentados no formato de moeda brasileira.
+```text
+multa = valor original × 10%
+juros = valor original × 1% × dias de atraso ÷ 30
+valor atualizado = valor original + multa + juros
+```
 
-Para isso, o programa utiliza formatação para apresentar os valores com duas casas decimais.
+### 6.2. Negociação
 
-Exemplo:
+Na negociação, o valor utilizado como base é o valor original retornado pelo método `mostrarTotal()`.
+
+Para pagamento à vista:
+
+```text
+valor à vista = valor original × 20%
+```
+
+Isso representa um desconto de 80% sobre o valor original.
+
+No parcelamento:
+
+```text
+entrada = valor original × 25%
+restante = valor original - entrada
+```
+
+O restante pode ser dividido em até 7 parcelas.
+
+No cartão:
+
+```text
+valor do cartão = valor original × 20% × 1,12
+```
+
+Ou seja, primeiro é aplicado o valor de 20% utilizado na condição à vista e depois o acréscimo de 12%.
+
+### 6.3. Vencimentos
+
+Na atualização de boleto, o novo vencimento é definido para 7 dias após a data atual.
+
+Nas negociações, o primeiro vencimento também é calculado para 7 dias após a data atual. As parcelas seguintes são definidas acrescentando um mês para cada parcela.
+
+### 6.4. Formatação dos valores
+
+Os valores financeiros são apresentados com duas casas decimais no formato de moeda brasileira:
 
 ```text
 R$ 500,00
 R$ 1.250,50
 ```
 
-### 6. ESTRUTURA DO PROJETO
+## 7. ESTRUTURA DO PROJETO
 
-O projeto foi desenvolvido em Java utilizando um único arquivo principal.
-
-A estrutura utilizada é:
+O projeto utiliza um único arquivo Java principal:
 
 ```text
 MaviBot
@@ -264,54 +258,55 @@ MaviBot
 └── testes.pdf
 ```
 
-O arquivo `MaviBot.java` contém as regras, funções, cálculos e fluxos de atendimento do chatbot.
+* **MaviBot.java:** contém as regras, funções, cálculos e fluxos do chatbot.
+* **README.md:** apresenta as informações e instruções do projeto.
+* **testes.pdf:** reúne os registros dos testes realizados durante o desenvolvimento.
 
-O arquivo `README.md` apresenta as informações sobre o projeto, seu funcionamento e suas principais regras.
+## 8. TESTES REALIZADOS
 
-O arquivo `testes.pdf` contém os registros dos testes realizados durante o desenvolvimento do chatbot.
+Foram realizados testes nos principais fluxos para verificar o funcionamento das regras e o comportamento do chatbot diante de diferentes entradas.
 
-### 7. TESTES REALIZADOS
+Entre eles:
 
-Durante o desenvolvimento foram realizados testes para verificar os principais fluxos do programa.
+* Opções do menu principal;
+* Negociação à vista, parcelada e por cartão;
+* Consulta de todas as parcelas;
+* Consulta por datas específicas;
+* Cálculo de multa e juros;
+* Atualização da data de vencimento;
+* Atendimento com agente;
+* Validação de CPF, telefone e e-mail;
+* Entradas inválidas e limite de tentativas;
+* Comandos de retorno e encerramento.
 
-Foram testadas as opções do menu principal, incluindo negociação de dívida, segunda via de boleto, boleto em atraso, atendimento com agente e encerramento do chatbot.
+Também foram verificadas diferentes formas de escrita das palavras-chave, incluindo palavras com e sem acentuação e letras maiúsculas ou minúsculas.
 
-Também foram realizados testes com entradas válidas e inválidas para verificar o tratamento de erros.
+Os testes ajudaram a identificar problemas durante o desenvolvimento e verificar se, após uma entrada inválida, o programa retornava corretamente ao fluxo esperado.
 
-Na negociação foram testadas as opções de pagamento à vista, parcelamento e cartão de crédito.
+## 9. LIMITAÇÕES
 
-Na segunda via foram testadas consultas de todas as parcelas e consultas de datas específicas.
+Por se tratar de um projeto acadêmico baseado em regras, a MaviBot possui algumas limitações.
 
-No boleto em atraso foram testados os cálculos de multa, juros e atualização da data de vencimento.
+Os dados são simulados e ficam diretamente no código. Em uma aplicação real, seria mais adequado utilizar um banco de dados para armazenar e consultar as informações dos clientes.
 
-Também foram testados os dados de contato, incluindo telefone e e-mail.
+Também não existem integrações reais com sistemas de cobrança, emissão de boletos, WhatsApp ou e-mail. Esses processos são representados apenas como parte do fluxo do chatbot.
 
-Os testes foram importantes principalmente para verificar se as regras estavam funcionando corretamente e se o chatbot retornava ao fluxo esperado depois de uma entrada inválida.
+O reconhecimento das mensagens depende das palavras previstas nas regras. Dessa forma, uma frase diferente das condições programadas pode não ser identificada corretamente.
 
-### 8. LIMITAÇÕES DO PROJETO
-
-Por ser um trabalho acadêmico baseado em regras, a MaviBot possui algumas limitações.
-
-Os dados utilizados no projeto são simulados e estão cadastrados diretamente no código. Em uma aplicação real, essas informações deveriam ser armazenadas em um banco de dados e consultadas de acordo com o cliente.
-
-O chatbot também não possui integração com sistemas de cobrança, sistemas de emissão de boletos, WhatsApp ou e-mail. No projeto, esses processos são apenas simulados para demonstrar como seria o fluxo de atendimento.
-
-Outra limitação é que o reconhecimento das mensagens depende das palavras-chave que foram programadas. Dessa forma, uma frase que não contenha uma palavra prevista nas regras pode não ser reconhecida corretamente.
-
-Em uma aplicação real, também seria necessário implementar mecanismos mais completos de segurança, controle de acesso e proteção dos dados dos clientes.
+Além disso, uma aplicação real precisaria de recursos mais completos de segurança, autenticação, controle de acesso e proteção dos dados dos clientes.
 
 Essas limitações fazem parte da proposta do trabalho, que tem como objetivo demonstrar a construção de um chatbot baseado em regras utilizando Java.
 
-### 9. COMENTÁRIO PESSOAL
+## 10. COMENTÁRIO PESSOAL
 
-Escolhi desenvolver o chatbot na área de cobrança porque é uma área que faz parte da minha rotina de trabalho. No meu trabalho, existem situações em que o cliente precisa apenas de uma segunda via, atualização de um boleto, consulta de uma informação ou orientação sobre uma negociação. Muitas vezes são solicitações que não precisam necessariamente de um atendimento mais longo com um agente.
+Escolhi desenvolver a MaviBot na área de cobrança porque é uma área que faz parte da minha rotina de trabalho. No dia a dia, existem situações em que o cliente precisa apenas de uma segunda via, atualização de um boleto, consulta de informações ou orientação sobre uma negociação.
 
-A partir disso, pensei em utilizar o chatbot como uma primeira etapa do atendimento. A ideia seria que ele pudesse identificar o que o cliente precisa e resolver algumas solicitações mais simples antes de encaminhar o atendimento para uma pessoa.
+A partir disso, pensei em utilizar o chatbot como uma primeira etapa do atendimento, deixando para o agente os casos que precisam de uma análise mais específica.
 
-Durante o desenvolvimento, percebi que mesmo um chatbot baseado apenas em regras precisa ter vários caminhos diferentes para conseguir tratar as situações que podem acontecer durante uma conversa. Foi necessário pensar nas palavras que o usuário poderia digitar, nas opções inválidas, nas tentativas de erro e também no momento em que o usuário poderia voltar ou encerrar o atendimento.
+Durante o desenvolvimento, percebi que mesmo um chatbot baseado em regras precisa considerar vários caminhos possíveis. Foi necessário pensar nas palavras que poderiam ser utilizadas pelo usuário, nas entradas inválidas, nas tentativas de erro e também nas opções de voltar ou encerrar o atendimento.
 
-Outra parte que exigiu atenção foram os cálculos relacionados aos boletos em atraso e às negociações, principalmente por envolver valores e datas diferentes. Os dados utilizados no projeto são simulados, mas procurei deixar os cálculos e os fluxos próximos de uma situação de atendimento.
+Os cálculos de boletos atrasados e negociações também exigiram atenção, principalmente por envolverem valores e datas diferentes. Apesar de os dados serem simulados, procurei deixar os fluxos próximos de situações que podem acontecer em um atendimento real.
 
-O projeto também me ajudou a entender melhor como as regras e os fluxos de um chatbot podem ser organizados dentro de um programa Java. Apesar de ser uma implementação simples, foi possível perceber que, para transformar a ideia em um sistema realmente utilizado em uma empresa, seria necessário integrar o chatbot com banco de dados, sistemas de cobrança, emissão de boletos e canais de atendimento.
+O projeto ajudou a entender melhor como regras e fluxos de atendimento podem ser organizados em Java. Também mostrou que, para transformar a ideia em uma aplicação realmente utilizada por uma empresa, seria necessário integrar o chatbot com banco de dados, sistemas de cobrança, emissão de boletos e canais de atendimento.
 
-De forma geral, o desenvolvimento da MaviBot foi uma forma de relacionar o conteúdo da disciplina com uma situação que conheço na prática. Além de trabalhar com Java e regras de chatbot, o projeto ajudou a pensar em como uma automação poderia ser utilizada para facilitar algumas etapas do atendimento de cobrança.
+De forma geral, a MaviBot foi uma forma de relacionar o conteúdo da disciplina com uma situação que conheço na prática. Além de trabalhar com Java e regras de chatbot, o projeto permitiu pensar em como uma automação pode facilitar algumas etapas do atendimento de cobrança.
