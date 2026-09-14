@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.text.Normalizer;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;   // Calcula diferença entre datas.
+import java.time.temporal.ChronoUnit;   // Calcula diferença entre datas
 import java.time.format.DateTimeFormatter;
 
 public class MaviBot {
@@ -9,7 +9,7 @@ public class MaviBot {
         Scanner scanner = new Scanner(System.in);
         int erros = 0;
 
-        // Exibe a apresentação inicial do chatbot.
+        // Apresentação inicial
         System.out.println("╔═══════════════════════════════╗");
         System.out.println("║       MAVI - COBBOT UCDB      ║");
         System.out.println("╚═══════════════════════════════╝");
@@ -54,7 +54,7 @@ public class MaviBot {
 
             } else {
 
-                // Controla as tentativas quando a mensagem não é reconhecida.
+                // Controla as tentativas de erro
                 erros++;
 
                 if (erros == 1) {
@@ -75,14 +75,13 @@ public class MaviBot {
         scanner.close();
     }
 
-    // Consulta a dívida pelo CPF e inicia o processo de negociação.
+    // Consulta a dívida pelo CPF
     public static boolean negociarDivida(Scanner scanner) {
         String cpf = solicitarCPF(scanner);
 
         if (cpf.equals("")) {
             return false;
         }
-        ;
 
         if (cpf.equals("12345678910")) {
 
@@ -140,7 +139,7 @@ public class MaviBot {
         }
     }
 
-    // Apresenta as opções de negociação e calcula os valores de cada modalidade.
+    // Mostra as opções de negociação
     public static boolean negociarDivida(Scanner scanner, String cpf, String nome, double valorDivida) {
         int erros = 0;
 
@@ -182,7 +181,7 @@ public class MaviBot {
                 double valorEntrada = valorDivida * 0.25;
                 double valorRestante = valorDivida - valorEntrada;
 
-                System.out.printf("%nMaviBot: O valor da valorEntrada será de %s.%n", formatarMoeda(valorEntrada));
+                System.out.printf("%nMaviBot: O valor da entrada será de %s.%n", formatarMoeda(valorEntrada));
 
                 int quantidadeParcelas = pedirQuantidadeParcelas(scanner, 1, 7);
 
@@ -192,7 +191,7 @@ public class MaviBot {
 
                 double valorParcela = valorRestante / quantidadeParcelas;
 
-                System.out.printf("MaviBot: valorEntrada: %s%n", formatarMoeda(valorEntrada));
+                System.out.printf("MaviBot: Entrada: %s%n", formatarMoeda(valorEntrada));
                 System.out.printf("MaviBot: %d parcela(s) de %s.%n", quantidadeParcelas, formatarMoeda(valorParcela));
 
                 int confirmacao = confirmarNegociacao(scanner);
@@ -209,7 +208,7 @@ public class MaviBot {
                     }
 
                     imprimirAcordo(nome, cpf, "Negociação parcelada",
-                            "valorEntrada " + formatarMoeda(valorEntrada) + " + "
+                            "Entrada: " + formatarMoeda(valorEntrada) + " + "
                                     + quantidadeParcelas + "x de "
                                     + formatarMoeda(valorParcela),
                             contato, quantidadeParcelas);
@@ -331,7 +330,7 @@ public class MaviBot {
             tentativas++;
 
             System.out.println();
-            System.out.println("\nMaviBot: Opção não encontrado. Digite uma das opções:");
+            System.out.println("\nMaviBot: Opção não encontrada. Digite uma das opções:");
             System.out.println("1 - Sim");
             System.out.println("2 - Não");
         }
@@ -342,7 +341,7 @@ public class MaviBot {
         return -1;
     }
 
-     // Exibe os dados do acordo e calcula as datas de vencimento das parcelas.
+     // Exibe os dados do acordo
     public static void imprimirAcordo(String nome, String cpf, String operacao, String detalhe, String[] contato,
             int quantidadeParcelas) {
 
@@ -381,7 +380,7 @@ public class MaviBot {
                 "MaviBot: O(s) boleto(s) será(ão) enviado(s) em até 5 minutos pelo canal solicitado.");
     }
 
-    // Consulta o acordo do cliente e permite solicitar todas ou uma parcela específica.
+    // Consulta o acordo e permite escolher as parcelas
     public static boolean segundaVia(Scanner scanner) {
 
         String cpf = solicitarCPF(scanner);
@@ -464,7 +463,7 @@ public class MaviBot {
                             dataInformada = valorEntrada;
                         } else {
                             System.out.println(
-                                    "\nMaviBot: Informe a data da parcela em atraso.");
+                                    "\nMaviBot: Informe a data da parcela.");
                             System.out.println(
                                     "MaviBot: Se quiser mais de uma, separe as datas por vírgula.");
                             System.out.print("Você: ");
@@ -583,7 +582,7 @@ public class MaviBot {
         return perguntarSePrecisaMais(scanner);
     }
 
-    // Consulta as parcelas vencidas e permite calcular seus valores atualizados.
+    // Consulta as parcelas em atraso
     public static boolean boletoAtrasado(Scanner scanner) {
 
         String cpf = solicitarCPF(scanner);
@@ -838,7 +837,7 @@ public class MaviBot {
             return false;
         }
 
-        // Define o novo vencimento do boleto para sete dias após a consulta.
+        // Define o novo vencimento
         LocalDate novoVencimento = LocalDate.now().plusDays(7);
 
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -976,7 +975,7 @@ public class MaviBot {
         return perguntarSePrecisaMais(scanner);
     }
 
-    // Coleta os dados necessários para encaminhar o cliente ao atendente.
+    // Coleta os dados para o atendente
     public static boolean falarComAtendente(Scanner scanner) {
 
         System.out.println("\nMaviBot: Vou encaminhar você para um atendente.");
@@ -1015,7 +1014,7 @@ public class MaviBot {
 
         return perguntarSePrecisaMais(scanner);
     }
-  // Exibe as opções disponíveis no menu principal.
+  // Exibe o menu principal
     public static void mostrarMenuPrincipal() {
 
         System.out.println("\nMaviBot: Escolha uma opção:");
@@ -1030,7 +1029,7 @@ public class MaviBot {
         System.out.println("╚═══════════════════════════════╝");
     }
 
-    // Normaliza o texto para facilitar o reconhecimento das mensagens.
+    // Normaliza o texto recebido
     public static String normalizar(String texto) {
 
         return Normalizer
@@ -1041,7 +1040,7 @@ public class MaviBot {
                 .trim();
     }
 
-    // Solicita e valida o CPF, permitindo até três tentativas.
+    // Solicita e valida o CPF
     public static String solicitarCPF(Scanner scanner) {
 
         int tentativas = 0;
@@ -1074,7 +1073,7 @@ public class MaviBot {
         return "";
     }
 
-    // Solicita e valida o nome do cliente.
+    // Solicita e valida o nome
     public static String solicitarNome(Scanner scanner) {
 
         int tentativas = 0;
@@ -1101,7 +1100,7 @@ public class MaviBot {
         return "";
     }
 
-    // Define o canal de contato e solicita o respectivo dado.
+    // Define o canal de contato
     public static String[] solicitarCanal(Scanner scanner) {
 
         int tentativas = 0;
@@ -1148,7 +1147,7 @@ public class MaviBot {
         return null;
     }
 
-    // Solicita e valida o telefone informado pelo cliente.
+    // Solicita e valida o telefone
     public static String solicitarTelefone(Scanner scanner) {
 
         int tentativas = 0;
@@ -1180,7 +1179,7 @@ public class MaviBot {
         return telefone.matches("\\d{10,11}");
     }
 
-    // Solicita e valida o e-mail informado pelo cliente.
+    // Solicita e valida o e-mail
     public static String solicitarEmail(Scanner scanner) {
 
         int tentativas = 0;
@@ -1212,7 +1211,7 @@ public class MaviBot {
                 "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$");
     }
 
-    // Pergunta se o cliente deseja continuar o atendimento.
+    // Pergunta se o cliente deseja continuar o atendimento
     public static boolean perguntarSePrecisaMais(Scanner scanner) {
 
         int erros = 0;
@@ -1255,7 +1254,7 @@ public class MaviBot {
             }
         }
     }
-    // Calcula o valor atualizado de uma parcela vencida com multa e juros.
+    // Calcula o valor atualizado da parcela
     public static double calcularValorAtualizado(double valorOriginal, LocalDate vencimento) {
 
         LocalDate hoje = LocalDate.now();
@@ -1271,12 +1270,12 @@ public class MaviBot {
         return valorOriginal + multa + juros;
     }
 
-    // Define o primeiro vencimento como sete dias após a data atual.
+    // Define o primeiro vencimento como sete dias após a data atual
     public static LocalDate calcularPrimeiroVencimento() {
         return LocalDate.now().plusDays(7);
     }
 
-     // Calcula o vencimento de cada parcela acrescentando os meses necessários.
+     // Calcula o vencimento de cada parcela
     public static LocalDate calcularVencimentoParcela(int numeroParcela) {
         LocalDate primeiroVencimento = calcularPrimeiroVencimento();
 
@@ -1317,7 +1316,7 @@ public class MaviBot {
         return totalOriginal;
     }
 
-    // Formata valores numéricos para o padrão de moeda utilizado no atendimento.
+    // Formata valores numéricos como moeda
     public static String formatarMoeda(double valor) {
 
         return String
