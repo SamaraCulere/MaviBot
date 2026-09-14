@@ -1,9 +1,6 @@
 # MaviBot — Chatbot baseado em regras
 
-👨‍💻 Autor
-Aluno: Samara Culere de Oliveira
-Disciplina: Desenvolvimento de ChatBot
-Professor: Murilo Costa
+Aluno: Samara Culere de Oliveira | Disciplina: Desenvolvimento de ChatBot | Professor: Murilo Costa
 
 ## 1. Descrição
 
